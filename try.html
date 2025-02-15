@@ -1,0 +1,16 @@
+v = function(t, e, i) {
+    e.style = void 0 === e.style ? "" : e.style, e.left.style = void 0 === e.left.style ? "" : e.left.style, e.right.style = void 0 === e.right.style ? "" : e.right.style, 0 === t.find(".tp-leftarrow.tparrows").length && t.append('<div class="tp-leftarrow tparrows ' + e.style + " " + e.left.style + '">' + e.tmp + "</div>"), 0 === t.find(".tp-rightarrow.tparrows").length && t.append('<div class="tp-rightarrow tparrows ' + e.style + " " + e.right.style + '">' + e.tmp + "</div>");
+    var a = t.find(".tp-leftarrow.tparrows"),
+        n = t.find(".tp-rightarrow.tparrows");
+    e.rtl ? (a.click(function() {
+        i.sc_indicator = "arrow", i.sc_indicator_dir = 0, t.revnext()
+    }), n.click(function() {
+        i.sc_indicator = "arrow", i.sc_indicator_dir = 1, t.revprev()
+    })) : (n.click(function() {
+        i.sc_indicator = "arrow", i.sc_indicator_dir = 0, t.revnext()
+    }), a.click(function() {
+        i.sc_indicator = "arrow", i.sc_indicator_dir = 1, t.revprev()
+    })), e.right.j = t.find(".tp-rightarrow.tparrows"), e.left.j = t.find(".tp-leftarrow.tparrows"), e.padding_top = parseInt(i.carousel.padding_top || 0, 0), e.padding_bottom = parseInt(i.carousel.padding_bottom || 0, 0), b(a, e.left, i), b(n, e.right, i), e.left.opt = i, e.right.opt = i, ("outer-left" == e.position || "outer-right" == e.position) && (i.outernav = !0)
+},
+#151c22
+#18212a;
