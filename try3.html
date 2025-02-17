@@ -1,103 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusive Menu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #222;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
-        .menu-section {
-            text-align: center;
-            padding: 50px 0;
-        }
-        .menu-section h2 {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .menu-category {
-            background: #ff7b00;
-            padding: 10px;
-            font-weight: bold;
-            color: #fff;
-            border-radius: 5px 5px 0 0;
-        }
-        .menu-card {
-            background: #333;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .menu-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-        }
-        .order-btn {
-            background: #ff7b00;
-            border: none;
-            padding: 8px 15px;
-            font-weight: bold;
-            color: #fff;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
-        .price {
-            font-weight: bold;
-            font-size: 18px;
-            color: #ff7b00;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cigarette Smoke Cursor</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #222;
+      cursor: none;
+      overflow: hidden;
+    }
+
+    .smoke {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+      border-radius: 50%;
+      filter: blur(15px);
+      animation: cigarette-smoke 6s ease-out forwards;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    @keyframes cigarette-smoke {
+      0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.8;
+      }
+      20% {
+        transform: translate(15px, -30px) scale(1.3) rotate(20deg);
+        opacity: 0.6;
+      }
+      40% {
+        transform: translate(-20px, -60px) scale(1.6) rotate(-25deg);
+        opacity: 0.5;
+      }
+      60% {
+        transform: translate(20px, -90px) scale(2) rotate(30deg);
+        opacity: 0.3;
+      }
+      80% {
+        transform: translate(-15px, -120px) scale(2.5) rotate(-20deg);
+        opacity: 0.2;
+      }
+      100% {
+        transform: translate(0, -150px) scale(3) rotate(0deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
+  <script>
+    document.addEventListener('mousemove', function(e) {
+      for (let i = 0; i < 3; i++) {
+        const smoke = document.createElement('div');
+        smoke.classList.add('smoke');
+        smoke.style.left = `${e.pageX + (Math.random() * 20 - 10)}px`;
+        smoke.style.top = `${e.pageY + (Math.random() * 20 - 10)}px`;
+        document.body.appendChild(smoke);
 
-    <div class="container menu-section">
-        <h2>EXCLUSIVE MENU</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-        
-        <div class="row">
-            <!-- Breakfast -->
-            <div class="col-md-4">
-                <div class="menu-category">Breakfast</div>
-                <div class="menu-card">
-                    <img src="images/img/traditional.jpg"Food">
-                    <h5>Food Title 1</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <button class="order-btn">ORDER NOW</button>
-                    <p class="price">$33</p>
-                </div>
-            </div>
-
-            <!-- Lunch -->
-            <div class="col-md-4">
-                <div class="menu-category">Lunch</div>
-                <div class="menu-card">
-                    <img src="https://via.placeholder.com/80" alt="Food">
-                    <h5>Food Title 3</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <button class="order-btn">ORDER NOW</button>
-                    <p class="price">$50</p>
-                </div>
-            </div>
-
-            <!-- Dinner -->
-            <div class="col-md-4">
-                <div class="menu-category">Dinner</div>
-                <div class="menu-card">
-                    <img src="https://via.placeholder.com/80" alt="Food">
-                    <h5>Food Title 5</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <button class="order-btn">ORDER NOW</button>
-                    <p class="price">$27</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        setTimeout(() => smoke.remove(), 6000);
+      }
+    });
+  </script>
 </body>
 </html>
